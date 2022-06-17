@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class QuestionType extends Model
 {
     use HasFactory;
 
-    protected $table = 'questions'; 
+    protected $table = 'question_types';
 
-    public function questionType()
+    public function questions()
     {
-        return $this->belongsTo(QuestionType::class);
+        return $this->hasMany(Question::class);
     }
+    
 }

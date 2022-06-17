@@ -18,6 +18,10 @@ Route::group(['middleware' => 'api'], function($router) {
     Route::post('/profile', [JWTController::class, 'profile']);
 });
 
+//Those are for admin, a middleware to be added
 Route::post('/add_survey', [SurveyController::class, 'addSurvey']);
 Route::post('/add_question', [QuestionController::class, 'addQuestion']);
+
+//Testing eloquent
+Route::post('/get_question', [QuestionController::class, 'getQuestion']);
 
