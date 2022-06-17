@@ -18,8 +18,6 @@ class CreateQuestionsTable extends Migration
             $table->string('context');
             $table->string('type');
             $table->bigInteger('survey_id');
-            $table->longText('choices')->nullable();
-
             $table->timestamps();
         });
     }
