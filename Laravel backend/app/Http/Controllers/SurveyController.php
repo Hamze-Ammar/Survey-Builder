@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use App\Models\Question;
+use App\Models\QuestionType;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -15,6 +17,19 @@ class SurveyController extends Controller
 
         return response()->json([
             "status" => "Success"
+        ], 200);
+    }
+
+    public function getServeyQuestions($id){
+        $survey = Survey::find($id);
+        $questions = $survey->questions;
+        foreach ($questions as $question) {
+            $question->QuestionType;
+        }
+        
+        return response()->json([
+            "status" => "Success",
+            "res"    => $questions
         ], 200);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -21,12 +22,17 @@ class QuestionController extends Controller
         ], 200);
     }
 
-    //Testing
-    public function getQuestion(){
-        $question = Question::find(2);
-        $question->questionType;
+    public function getAllQuestions(){
+        $questions = Question::all();
+
+        foreach ($questions as $question) {
+            $question->questionType;
+        }
+
         return response()->json([
-            "status" => $question
+            "status" => $questions
         ], 200);
     }
+
+    
 }

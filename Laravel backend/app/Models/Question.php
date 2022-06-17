@@ -9,10 +9,12 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $table = 'questions'; 
+    protected $table = 'questions';
 
     public function questionType()
     {
         return $this->belongsTo(QuestionType::class);
     }
+
+    
 }

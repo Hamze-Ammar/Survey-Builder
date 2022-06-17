@@ -23,5 +23,6 @@ Route::post('/add_survey', [SurveyController::class, 'addSurvey']);
 Route::post('/add_question', [QuestionController::class, 'addQuestion']);
 
 //Testing eloquent
-Route::post('/get_question', [QuestionController::class, 'getQuestion']);
+Route::post('/get_all_questions', [QuestionController::class, 'getAllQuestions']);
+Route::get('/get_servey_questions/{id}', [SurveyController::class, 'getServeyQuestions']);
 
