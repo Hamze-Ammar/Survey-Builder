@@ -26,10 +26,11 @@ class SurveyController extends Controller
         foreach ($questions as $question) {
             $question->QuestionType;
         }
-        
+
         return response()->json([
             "status" => "Success",
             "res"    => $questions
+
         ], 200);
     }
 

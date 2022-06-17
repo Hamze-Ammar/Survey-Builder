@@ -34,5 +34,16 @@ class QuestionController extends Controller
         ], 200);
     }
 
+    //Testing
+    public function getQuestionWithChoices(){
+        $question = Question::find(3);
+        $question->questionType;
+        $question->choices;
+        
+
+        return response()->json([
+            "status" => $question
+        ], 200);
+    }
     
 }
