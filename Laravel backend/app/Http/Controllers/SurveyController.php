@@ -34,5 +34,14 @@ class SurveyController extends Controller
         ], 200);
     }
 
+    public function getServeys(){
+        $surveys = Survey::all();
+
+        return response()->json([
+            "status" => "Success",
+            "res"    => $surveys
+
+        ], 200);
+    }
 }
 

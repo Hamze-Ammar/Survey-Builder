@@ -30,6 +30,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/get_all_questions', [QuestionController::class, 'getAllQuestions']);
         Route::get('/get_question_choices', [QuestionController::class, 'getQuestionWithChoices']);
         Route::get('/get_servey_questions/{id}', [SurveyController::class, 'getServeyQuestions']);
+        Route::get('/get_serveys', [SurveyController::class, 'getServeys']);
         Route::post('/save_answer', [AnswerController::class, 'saveAnswer']);
     });
 
