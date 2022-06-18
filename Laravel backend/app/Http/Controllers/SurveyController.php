@@ -25,6 +25,7 @@ class SurveyController extends Controller
         $questions = $survey->questions;
         foreach ($questions as $question) {
             $question->QuestionType;
+            $question->choices;
         }
 
         return response()->json([

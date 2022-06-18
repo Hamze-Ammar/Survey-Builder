@@ -35,8 +35,8 @@ class QuestionController extends Controller
     }
 
     //Testing
-    public function getQuestionWithChoices(){
-        $question = Question::find(3);
+    public function getQuestionWithChoices($id){
+        $question = Question::find($id);
         $question->questionType;
         $question->choices;
         
