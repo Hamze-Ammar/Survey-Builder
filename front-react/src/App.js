@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Survey from "./components/Survey";
 import Surveys from "./components/Surveys";
 import Wrapper from "./components/Wrapper";
+import FillSurvey from "./components/FillSurvey";
 
 function App() {
   // Initialize State
@@ -17,24 +19,41 @@ function App() {
       const data = await res.json();
 
       setSurveys(data.res);
-
     } catch (err) {
       console.log(err);
     }
   };
 
-
   return (
-    <div className="App">
-      <Navbar allSurveys={fetchSurveys} />
-      <Wrapper>
-        {surveys.length > 0 ? (
-          <Surveys surveys={surveys} />
-        ) : (
-          "No Tasks To Show"
-        )}
-      </Wrapper>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar allSurveys={fetchSurveys} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Wrapper>
+                  {surveys.length > 0 ? (
+                    <Surveys surveys={surveys} />
+                  ) : (
+                    "No Tasks To Show"
+                  )}
+                </Wrapper>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/fill_survey"
+            element={
+              <>
+              <FillSurvey/>
+              </>
+            }
+            ></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

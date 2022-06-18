@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Navbar(props) {
   return (
@@ -8,9 +10,9 @@ export default function Navbar(props) {
           <a className="active" href="">
             Survey Builder
           </a>
-          <a href="#" onClick={props.allSurveys}>
+         <Link to="/"><span href="#" onClick={props.allSurveys}> 
             All Surveys
-          </a>
+            </span></Link>
           <a href="#">MySurveys</a>
           <a href="#">MyAnswers</a>
         </div>
@@ -20,7 +22,7 @@ export default function Navbar(props) {
             Login
           </a>
           <a className="topnav-right" href="#">
-            register
+            Register
           </a>
           <a className="topnav-right" href="#">
             Logout
