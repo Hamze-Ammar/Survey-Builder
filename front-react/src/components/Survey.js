@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
 
-export default function Survey(props) {
+export default function Survey(survey) {
+
   return (
-    <div className='Survey-box'>
-        <h3>{props.title}</h3>
-        <p>{props.num_of_questions} questions</p>
+    <div className="Survey-box">
+      <h3>{survey.survey.name}</h3>
+      <p>{survey.survey.num_of_questions} questions</p>
+
     </div>
-  )
+  );
 }
