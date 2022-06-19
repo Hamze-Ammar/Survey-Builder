@@ -11,8 +11,10 @@ class ChoiceController extends Controller
     public function addChoice(Request $request)
     {
         $choice = new Choice;
-        $choice->context = $request->context;
         $choice->question_id = $request->question_id;
+
+        $choice->context = $request->context;
+
         $choice->save();
 
         return response()->json([
