@@ -11,10 +11,11 @@ export default function Navbar(props) {
             Survey Builder
           </a>
          <Link to="/"><span href="#" onClick={props.allSurveys}> 
-            All Surveys
+            Show Surveys
             </span></Link>
-          <a href="#">MySurveys</a>
-          <a href="#">MyAnswers</a>
+            <Link to= "/admin">
+          <span href="#">Add Surveys</span></Link>
+          <a href="#"></a>
         </div>
         <div className="topnav-middle"></div>
         <div>
