@@ -14,9 +14,11 @@ class SurveyController extends Controller
         $survey->name = $request->name;
         $survey->num_of_questions = $request->num_of_questions;
         $survey->save();
+        $id = $survey->id;
 
         return response()->json([
-            "status" => "Success"
+            "status" => "Success",
+            "survey_id"   => $id
         ], 200);
     }
 
