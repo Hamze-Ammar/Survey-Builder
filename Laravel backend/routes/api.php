@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ChoiceController;
 
 Route::group(['prefix' => 'v1'], function(){
     Route::group(['prefix' => 'user'], function(){
@@ -23,6 +24,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['middleware' => 'role.admin'], function(){
             Route::post('/add_survey', [SurveyController::class, 'addSurvey']);
             Route::post('/add_question', [QuestionController::class, 'addQuestion']);
+            Route::post('/add_choice', [ChoiceController::class, 'addChoice']);
         });
     });
 
