@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\QuestionType;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 
@@ -13,12 +14,20 @@ class QuestionController extends Controller
     public function addQuestion(Request $request){
         $question = new Question;
         $question->context = $request->context;
-        $question->type = $request->type;
         $question->survey_id = $request->survey_id;
+
+        $type = $request->type;
+        $question_type = QuestionType::where('type', $type)->first();
+        //echo $question_type;
+        $question_id = $question_type->id;
+        $question->question_type_id = $question_id;
+
         $question->save();
+        $id = $question->id;
 
         return response()->json([
-            "status" => "Success"
+            "status" => "Success",
+            "question_id" => $id
         ], 200);
     }
 
