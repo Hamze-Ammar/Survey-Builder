@@ -5,9 +5,9 @@ export default function AddChoiceDuo() {
     <div>
         <br />
         <label htmlFor="">min: </label>
-        <input className='normal-size' type="number" placeholder='min' />
+        <input className='normal-size normal-height' type="number" placeholder='min'  />
         <label htmlFor=""> max: </label>
-        <input className='normal-size' type="number" placeholder='max' />
+        <input className='normal-size normal-height' type="number" placeholder='max'  />
     </div>
   )
 }
