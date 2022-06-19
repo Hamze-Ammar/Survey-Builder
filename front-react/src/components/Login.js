@@ -2,10 +2,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import classes from "./Login.module.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("");
+  const [token, setToken] = useState("");
+
+  let navigate = useNavigate(); 
+  const routeChange = (x) =>{
+    let path;
+    x ? path = `/admin`:  path = `/` ; 
+    navigate(path);
+  }
 
     //Login User
     const loginUser = async (credentials) => {
@@ -17,7 +28,10 @@ export default function Login() {
         body: JSON.stringify(credentials),
     });
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
+    data.error ? alert("User Not Found") : alert("You are now signed in!");
+    data.access_token && localStorage.setItem('access_token', data.access_token);
+    data.type == '1' ? routeChange(true) : routeChange(false)  ;
     };
 
   //Add Data to Backend on Submit
