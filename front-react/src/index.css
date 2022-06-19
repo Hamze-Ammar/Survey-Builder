@@ -62,6 +62,10 @@ body {
   width: 200px;
 }
 
+.bgd-white {
+  background-color: white;
+}
+
 .delete {
   background-color: #f44336;
 }
@@ -72,7 +76,6 @@ body {
 }
 
 .normal-ruler {
-
   color: #333;
 }
 
