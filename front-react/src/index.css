@@ -57,3 +57,25 @@ body {
   max-width: 75vw;
   margin: 0 auto;
 }
+
+.normal-size {
+  width: 200px;
+}
+
+.delete {
+  background-color: #f44336;
+}
+
+.alert-msg {
+  font-weight: 700;
+  color: #f44336;
+}
+
+.normal-ruler {
+
+  color: #333;
+}
+
+.normal-height {
+  height: 2em;
+}
