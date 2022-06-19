@@ -18,12 +18,13 @@ export default function Navbar(props) {
         </div>
         <div className="topnav-middle"></div>
         <div>
-          <a className="topnav-right" href="#">
+        <Link to="/login"><span className="topnav-right" href="#">
             Login
-          </a>
-          <a className="topnav-right" href="#">
+          </span></Link>
+          <Link to="/register">
+          <span className="topnav-right" href="#">
             Register
-          </a>
+          </span></Link>
           <a className="topnav-right" href="#">
             Logout
           </a>
