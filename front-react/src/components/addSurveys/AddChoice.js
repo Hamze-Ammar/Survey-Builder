@@ -3,12 +3,12 @@ import React from 'react'
 export default function AddChoice() {
   return (
     <div>
-        <label htmlFor="">choice 1: </label>
-        <input className='normal-size' type="text" placeholder='choice1' /> <br />
-        <label htmlFor="">choice 2: </label>
-        <input className='normal-size' type="text" placeholder='choice2' /> <br />
-        <label htmlFor="">choice 3: </label>
-        <input className='normal-size' type="text" placeholder='choice3' /> <br />
+        <label htmlFor="">Choice 1: </label>
+        <input className='normal-size' style={{'backgroundColor':'white'}} type="text" placeholder='Choice1' /> <br />
+        <label htmlFor="">Choice 2: </label>
+        <input className='normal-size' style={{'backgroundColor':'white'}} type="text" placeholder='Choice2' /> <br />
+        <label htmlFor="">Choice 3: </label>
+        <input className='normal-size' style={{'backgroundColor':'white'}} type="text" placeholder='Choice3' /> <br />
     </div>
   )
 }
