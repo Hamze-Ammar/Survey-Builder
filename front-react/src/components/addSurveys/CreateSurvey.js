@@ -13,12 +13,12 @@ export default function CreateSurvey(props) {
   //Collecting Survey Data:
   const [title, setTitle] = useState("");
   const [num_of_questions, setNumOfQuestions] = useState(0);
-  const [survey_id, setSurveyId] = useState('');
+  const [survey_id, setSurveyId] = useState("");
   const [start_submission, setStartSubmission] = useState(false);
 
   //Create an object to hold the survey info
   let mySurvey = {};
-  mySurvey.name = title ;
+  mySurvey.name = title;
   mySurvey.num_of_questions = track_question_num;
   //console.log(mySurvey);
 
@@ -29,27 +29,26 @@ export default function CreateSurvey(props) {
       return;
     }
     setStartCreation(true);
+    setStartSubmission(false);
   };
 
   const submitServey = async () => {
     let info = {};
-    info.url = 'http://127.0.0.1:8000/api/v1/admin/add_survey';
-    info.token = 'Bearer ' + localStorage.getItem('access_token');
+    info.url = "http://127.0.0.1:8000/api/v1/admin/add_survey";
+    info.token = "Bearer " + localStorage.getItem("access_token");
     let name = mySurvey.name;
     let num_of_questions = mySurvey.num_of_questions;
-    info.data = {name,  num_of_questions }
-    let id = await sendRequest(info);
-    setSurveyId(id);
+    info.data = { name, num_of_questions };
+    setSurveyId(await sendRequest(info));
     setStartSubmission(true);
-    //console.log(survey_id);
-  }
+  };
 
   const sendRequest = async (info) => {
     const res = await fetch(info.url, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Authorization": info.token
+        Authorization: info.token,
       },
       body: JSON.stringify(info.data),
     });
@@ -58,13 +57,15 @@ export default function CreateSurvey(props) {
     return id;
   };
 
+
+
   return (
     <div>
       <br />
       <h3>Create Survey*</h3>
       <label htmlFor="name">Survey Name:</label>
       <input
-        style={{'backgroundColor':'white'}}
+        style={{ backgroundColor: "white" }}
         placeholder="Survey Name"
         type="text"
         name="name"
@@ -95,7 +96,14 @@ export default function CreateSurvey(props) {
       {msg && <AlertMessage text={"Missing values!"} />}
       <br /> <br />
       <hr style={{ borderColor: "#04aa6d" }} />
-      {startCreation && <CreateQuestion track_question_num={track_question_num} setTrackQuestionNum={setTrackQuestionNum} />}
+      {startCreation && (
+        <CreateQuestion
+          track_question_num={track_question_num}
+          setTrackQuestionNum={setTrackQuestionNum}
+          start_submission={start_submission}
+          survey_id={survey_id}
+        />
+      )}
       {startCreation && <button onClick={submitServey}>Save Survey</button>}
     </div>
   );
