@@ -4,12 +4,12 @@ import AddChoiceDuo from "./AddChoiceDuo";
 import AlertMessage from "./AlertMessage";
 
 export default function CreateQuestion({
-    track_question_num,
-    setTrackQuestionNum,
-    start_submission,
-    survey_id
+  track_question_num,
+  setTrackQuestionNum,
+  start_submission,
+  survey_id,
 }) {
-    //let survey_id = survey_id;
+  //let survey_id = survey_id;
 
   //Track num of questions increment by 1 with every new question
   useEffect(() => {
@@ -23,6 +23,9 @@ export default function CreateQuestion({
   const types_of_duo_choices = ["range"];
   const [msg, setMsg] = useState(false);
 
+  // To send to the question id to the children routes | choices
+  const [question_id, setQuestionId] = useState("");
+
   const addNewQuestion = () => {
     if (!question_context || !question_type) {
       setMsg(true);
@@ -32,17 +35,16 @@ export default function CreateQuestion({
     setAdd(true);
   };
 
-
   // Preparing data to send request
   // we need context, survey_id, type
   useEffect(() => {
-    if (start_submission && survey_id ){
-        console.log('submision started');
-        console.log('question context: '+question_context);
-        //console.log('survey_id: '+ survey_id);
-        console.log('question: '+ question_type);
-        //let survey_id = survey_id;
-        submitQuestion();
+    if (start_submission && survey_id) {
+      //console.log("submision started");
+      //console.log("question context: " + question_context);
+      //console.log('survey_id: '+ survey_id);
+      //console.log("question: " + question_type);
+      //let survey_id = survey_id;
+      submitQuestion();
     }
   }, [start_submission]);
 
@@ -54,8 +56,8 @@ export default function CreateQuestion({
     //let survey_id = survey_id;
     let type = question_type;
     info.data = { context, survey_id, type };
-    let id = await sendRequest(info);
-    console.log(id);
+    setQuestionId(await sendRequest(info));
+    //console.log(question_id);
     //setSurveyId(id);
     //setStartSubmission(true);
   };
@@ -70,12 +72,11 @@ export default function CreateQuestion({
       body: JSON.stringify(info.data),
     });
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     let id = await data.question_id;
-    console.log(id);
+    //console.log(id);
     return id;
   };
-
 
   return (
     <div>
@@ -110,8 +111,18 @@ export default function CreateQuestion({
         <option value="number">number</option>
         <option value="range">range</option>
       </select>
-      {types_of_multiple_choices.includes(question_type) && <AddChoice />}
-      {types_of_duo_choices.includes(question_type) && <AddChoiceDuo />}
+      {types_of_multiple_choices.includes(question_type) && (
+        <AddChoice
+          start_submission={start_submission}
+          question_id={question_id}
+        />
+      )}
+      {types_of_duo_choices.includes(question_type) && (
+        <AddChoiceDuo
+          start_submission={start_submission}
+          question_id={question_id}
+        />
+      )}
       <br /> <br /> <br />
       <button className="normal-size" onClick={addNewQuestion}>
         Add New Question
