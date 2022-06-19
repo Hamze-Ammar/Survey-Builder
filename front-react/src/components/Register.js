@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import classes from "./Register.module.css";
 import { Link } from "react-router-dom";
 
-
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,8 +10,8 @@ export default function Register() {
   const [password_confirmation, setPasswordConfirmation] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-   //Registering User
-   const registerUser = async (credentials) => {
+  //Registering User
+  const registerUser = async (credentials) => {
     const res = await fetch("http://127.0.0.1:8000/api/v1/user/register", {
       method: "POST",
       headers: {
@@ -21,8 +20,7 @@ export default function Register() {
       body: JSON.stringify(credentials),
     });
     const data = await res.json();
-    console.log(data);
-    // setTasks([...tasks, data]);
+    //console.log(data);
   };
 
   //Add Data to Backend on Submit
@@ -40,7 +38,7 @@ export default function Register() {
   };
 
   return (
-    <div className="container-forms">
+    <div className={classes.containerRegister}>
       <form className={classes.modalContent} onSubmit={onSubmit}>
         <div className={classes.container}>
           <h1>Sign Up</h1>
@@ -98,8 +96,8 @@ export default function Register() {
             name="psw-repeat"
             value={password_confirmation}
             onChange={(e) => {
-                setPasswordConfirmation(e.target.value);
-              }}
+              setPasswordConfirmation(e.target.value);
+            }}
             required
           />
 
@@ -122,9 +120,11 @@ export default function Register() {
           </p>
 
           <div className={classes.clearfix}>
-          <Link to="/"><button type="button" className={classes.cancelbtn}>
-              Cancel
-            </button></Link>
+            <Link to="/">
+              <button type="button" className={classes.cancelbtn}>
+                Cancel
+              </button>
+            </Link>
             <button type="submit" className={classes.signupbtn}>
               Sign Up
             </button>
