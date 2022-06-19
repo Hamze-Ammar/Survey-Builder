@@ -7,6 +7,7 @@ import Wrapper from "./components/Wrapper";
 import FillSurvey from "./components/FillSurvey";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Admin from "./components/Admin";
 
 function App() {
   // Initialize State
@@ -50,6 +51,16 @@ function App() {
             element={
               <>
               <FillSurvey/>
+              </>
+            }
+            ></Route>
+             <Route
+            path="/admin"
+            element={
+              <>
+              <Wrapper>
+              <Admin/>
+              </Wrapper>
               </>
             }
             ></Route>
