@@ -8,8 +8,9 @@ import Wrapper from "./Wrapper";
 export default function FillSurvey() {
   const location = useLocation();
   let myid = location.state.id;
+  let survey_name = location.state.name;
   //let data_id = {"id":myid};
-  console.log(myid);
+  // console.log(survey_name);
 
   // Initialize State
   const [questions, setQuestions] = useState([]);
@@ -36,13 +37,16 @@ export default function FillSurvey() {
   }, []);
 
   return (
-    <><Wrapper>
-        <br></br> <br />
-      {questions.length > 0 ? (
-        <Questions questions={questions} />
-      ) : (
-        "No Questions To Show"
-      )}
+    <>
+      <Wrapper>
+        <br></br> <h1 className="title-bgd">Survey Name:  "{survey_name}"</h1> <br />
+        <p>Please read and answer the questions below carefully*</p>
+        {questions.length > 0 ? (
+          <Questions questions={questions} />
+        ) : (
+          "No Questions To Show"
+        )}
+        <button className="extra-margin">Submit</button>
       </Wrapper>
     </>
   );
