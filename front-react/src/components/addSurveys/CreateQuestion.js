@@ -9,7 +9,8 @@ export default function CreateQuestion({
   start_submission,
   survey_id,
 }) {
-  //let survey_id = survey_id;
+
+
 
   //Track num of questions increment by 1 with every new question
   useEffect(() => {
@@ -38,15 +39,18 @@ export default function CreateQuestion({
   // Preparing data to send request
   // we need context, survey_id, type
   useEffect(() => {
-    if (start_submission && survey_id) {
+    if (start_submission && survey_id && question_context && question_type ) {
       //console.log("submision started");
       //console.log("question context: " + question_context);
       //console.log('survey_id: '+ survey_id);
       //console.log("question: " + question_type);
       //let survey_id = survey_id;
+      setMsg(false)
       submitQuestion();
+    }else{
+      if (start_submission){setMsg(true);}
     }
-  }, [start_submission]);
+  }, [start_submission, survey_id]);
 
   const submitQuestion = async () => {
     let info = {};
@@ -121,6 +125,7 @@ export default function CreateQuestion({
         <AddChoiceDuo
           start_submission={start_submission}
           question_id={question_id}
+
         />
       )}
       <br /> <br /> <br />

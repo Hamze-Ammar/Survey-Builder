@@ -32,6 +32,7 @@ export default function CreateSurvey(props) {
     setStartSubmission(false);
   };
 
+
   const submitServey = async () => {
     let info = {};
     info.url = "http://127.0.0.1:8000/api/v1/admin/add_survey";

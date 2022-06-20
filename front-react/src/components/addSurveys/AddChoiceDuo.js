@@ -7,6 +7,8 @@ export default function AddChoiceDuo({ start_submission, question_id }) {
   const [choice_context_1, setChoiceContext1] = useState([]);
   const [choice_context_2, setChoiceContext2] = useState([]);
 
+
+
     // Preparing data to send request
   // we need context, survey_id, type
   useEffect(() => {

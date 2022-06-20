@@ -1,24 +1,37 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import AlertMessage from "./AlertMessage";
 
 export default function AddChoice({ start_submission, question_id }) {
   // Prepare data
-  const [choice_context_1, setChoiceContext1] = useState([]);
-  const [choice_context_2, setChoiceContext2] = useState([]);
-  const [choice_context_3, setChoiceContext3] = useState([]);
+  const [choice_context_1, setChoiceContext1] = useState("");
+  const [choice_context_2, setChoiceContext2] = useState("");
+  const [choice_context_3, setChoiceContext3] = useState("");
+
+  const [msg, setMsg] = useState(false);
 
 
   // Preparing data to send request
   // we need context, survey_id, type
   useEffect(() => {
-
-    if (start_submission && question_id) {
-        let mychoices = [choice_context_1, choice_context_2 , choice_context_3];
-        for(let i=0; i<mychoices.length; i++){
-            console.log("submision started");
-            console.log("choice context: " + mychoices[i]);
-            submitChoice(mychoices[i]);
-        }
-        // Try redirect admin to a new page once the suyvey is submitted
+    if (
+      start_submission &&
+      question_id &&
+      choice_context_1 &&
+      choice_context_2 &&
+      choice_context_3
+    ) {
+      let mychoices = [choice_context_1, choice_context_2, choice_context_3];
+      for (let i = 0; i < mychoices.length; i++) {
+        console.log("submision started");
+        console.log("choice context: " + mychoices[i]);
+        submitChoice(mychoices[i]);
+      }
+      setMsg(false);
+      // Try redirect admin to a new page once the suyvey is submitted
+    } else {
+      if (start_submission) {
+        setMsg(true);
+      }
     }
   }, [question_id]);
 
@@ -79,6 +92,7 @@ export default function AddChoice({ start_submission, question_id }) {
         }}
       />{" "}
       <br />
+      {msg && <AlertMessage text={"Missing values!"} />}
     </div>
   );
 }

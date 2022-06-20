@@ -17,7 +17,7 @@ export default function Choices(props) {
 
   // Prepare to send data on submit: {for radio button only since it's a special case}
   useEffect(() => {
-    if (submitQuestions && question_id) {
+    if (submitQuestions && question_id && answer) {
             submitAnswer(answer);
         // Try redirect admin to a new page once the suyvey is submitted
     }
