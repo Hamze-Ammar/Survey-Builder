@@ -6,7 +6,7 @@ import Datetime from "./Datetime";
 import Range from "./Range";
 import Checkbox from "./Checkbox";
 
-export default function Question({question, index}) {
+export default function Question({question, index, submitQuestions}) {
   let my_index = index +1;
     //console.log(question);
     question = question;
@@ -22,13 +22,13 @@ export default function Question({question, index}) {
       {/* <p>question type: {type}</p> */}
 
       {choices.length > 0 && (
-        <Choices choices={choices} type={type} question_id={question_id} />
+        <Choices choices={choices} type={type} question_id={question_id} submitQuestions={submitQuestions}  />
       )}
 
-      {type==="text" && <Text  question_id={question_id}/>}
-      {type==='number' && <Number /> }
-      {type==='datetime' && <Datetime />}
-      {type==='range' && <Range choices={choices} />}
+      {type==="text" && <Text  question_id={question_id} submitQuestions={submitQuestions} />}
+      {type==='number' && <Number question_id={question_id} submitQuestions={submitQuestions}/> }
+      {type==='datetime' && <Datetime question_id={question_id} submitQuestions={submitQuestions}/>}
+      {type==='range' && <Range choices={choices} question_id={question_id} submitQuestions={submitQuestions}/>}
 
         <br />
       <hr style={{ borderColor: "gray" }} />
