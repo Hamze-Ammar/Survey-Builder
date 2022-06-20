@@ -7,10 +7,10 @@ export default function Questions(questions) {
     //console.log(questions);
 
   return (
-    <>
-      {questions.map((question) => (
-        <Question key={question.id} question={question} />
+    <div>
+      {questions.map((question, index) => (
+        <Question key={question.id} question={question} index={index} />
       ))}
-    </>
+    </div>
   );
 }
