@@ -72,7 +72,7 @@ export default function CreateQuestion({
       body: JSON.stringify(info.data),
     });
     const data = await res.json();
-    //console.log(data);
+    console.log(data);
     let id = await data.question_id;
     //console.log(id);
     return id;
