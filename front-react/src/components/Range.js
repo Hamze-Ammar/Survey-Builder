@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 
-export default function Range() {
+export default function Range({ choices }) {
+  //console.log(choices[0].context);
+  let min = choices[0].context;
+  let max = choices[1].context;
+  console.log(min);
   const [rangeValue, setRangeValue] = useState("");
 
   return (
     <div>
-      <label for="points">Points (between 0 and 10):</label> <br /> <br />
-      <input
-        type="range"
-        id="points"
-        name="points"
-        min="0"
-        max="10"
-        onChange={(e) => {setRangeValue(e.target.value)}}
-      /> <br />
+      <label for="points">
+        min: {min}{" "}
+        <input
+          type="range"
+          id="points"
+          name="points"
+          min={min}
+          max={max}
+          onChange={(e) => {
+            setRangeValue(e.target.value);
+          }}
+        />
+        {max} : max
+      </label>{" "}
+      <br /> <br /> <br />
       {rangeValue && rangeValue}
     </div>
   );
