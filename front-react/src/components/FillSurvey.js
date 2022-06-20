@@ -25,6 +25,7 @@ export default function FillSurvey() {
   };
 
   // Initialize all questions into state from backend at component load
+  // We pass the survey id to get its questions
   useEffect(() => {
     const getQuestions = async (id) => {
       const dataFromServer = await fetchQuestions(id);
@@ -36,7 +37,7 @@ export default function FillSurvey() {
 
   return (
     <><Wrapper>
-        <br></br>
+        <br></br> <br />
       {questions.length > 0 ? (
         <Questions questions={questions} />
       ) : (
